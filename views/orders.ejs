@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+  </head>
+  <body>
+    <div class="">
+        <div class="">Your total:  <span style="margin-left: 2px;"><%= total %></span></div>
+        <div class="">Nhận hàng khi thanh toán</div>
+        <% products.forEach(function(product) { %>
+        <% const variant = product.selected_options.map(function(option) { return option.option_name }) || [] %>
+        <div class="flex flex-col rounded-lg bg-white sm:flex-row">
+          <img class="m-[13px] h-full w-28 rounded-md border object-cover object-center" src="<%= product.image.url %>" alt="" />
+          <div class="flex w-full flex-col px-4 py-4">
+            <span class="font-semibold text-lg"><%= product.name %></span>
+            <span class="float-right">
+              <% variant.forEach(function(item, index) { %>
+                <%= item %> <%= variant.length - 1 === index ? "" : "-" %> 
+              <% }); %>
+            </span>
+            <div class="">
+              Quantity:
+              <span class="ml-2"><%= product.quantity %></span>
+            </div>
+            <p class="text-lg"><%= product.price.formatted_with_code %></p>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+  </body>
+</html>
