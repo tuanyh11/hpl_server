@@ -5,7 +5,7 @@ const nodemailer = require("nodemailer");
 const cors = require("cors");
 const ejs = require("ejs");
 const htmlToText = require("html-to-text");
-const juice = require("juice");
+const juice = require("juice"); 
 const fs = require("fs");
 
 const app = express();
